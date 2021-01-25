@@ -14,13 +14,12 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
-ds = ### YOUR CODE HERE ###
+from azureml.core import Dataset, Datastore
+from azureml.data.datapath import DataPath
+url_path=["https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"]
 
-x, y = clean_data(ds)
-
-# TODO: Split data into train and test sets.
-
-### YOUR CODE HERE ###a
+dataset = Dataset.Tabular.from_delimited_files(path=url_path)
+ds = dataset.to_pandas_dataframe()
 
 run = Run.get_context()
 
@@ -50,6 +49,13 @@ def clean_data(data):
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
     
+x, y = clean_data(ds)
+
+# TODO: Split data into train and test sets.
+
+from sklearn.model_selection import train_test_split
+
+x_train, x_test,y_train,y_test = train_test_split(x,y, test_size=0.3, random_state=0)
 
 def main():
     # Add arguments to script
