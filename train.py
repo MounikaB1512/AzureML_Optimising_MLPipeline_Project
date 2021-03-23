@@ -18,8 +18,7 @@ from azureml.core import Dataset, Datastore
 from azureml.data.datapath import DataPath
 url_path=["https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"]
 
-dataset = Dataset.Tabular.from_delimited_files(path=url_path)
-ds = dataset.to_pandas_dataframe()
+df = Dataset.Tabular.from_delimited_files(path=url_path)
 
 run = Run.get_context()
 
@@ -29,7 +28,7 @@ def clean_data(data):
     weekdays = {"mon":1, "tue":2, "wed":3, "thu":4, "fri":5, "sat":6, "sun":7}
 
     # Clean and one hot encode data
-    x_df = data.to_pandas_dataframe().dropna()
+    x_df = df.to_pandas_dataframe().dropna()
     jobs = pd.get_dummies(x_df.job, prefix="job")
     x_df.drop("job", inplace=True, axis=1)
     x_df = x_df.join(jobs)
@@ -48,8 +47,9 @@ def clean_data(data):
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
+    return(x_df,y_df)
     
-x, y = clean_data(ds)
+x, y = clean_data(df)
 
 # TODO: Split data into train and test sets.
 
