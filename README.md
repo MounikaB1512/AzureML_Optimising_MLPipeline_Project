@@ -32,9 +32,9 @@ The training data is fed into Logistic Regression
 __HyperParameters:__ 
     *C:* -Inverse of regularisation: chosen discrete parameters choice(100, 10, 1.0, 0.1, 0.01)
                       
-   *max_iter:* -Number of iterations possible :chosen discrete parameters choice(100, 120, 150,200)
+     *max_iter:* -Number of iterations possible :chosen discrete parameters choice(100, 120, 150,200)
                       
-__RandomParameterSampling__ Similar GridSearch,RandomSearch in python.It is used to choose the hyperparameters of a model from a set of values defined using various options such as choice, uniform ,loguniform,normal.
+__RandomParameterSampling__ Similar to GridSearch,RandomSearch in python.It is used to choose the hyperparameters of a model from a set of values defined using various options such as choice, uniform ,loguniform,normal.
 
 __Early termination policy__ Bandit policy is used as specified. Bandit Policy is based on slack factor and it terminates runs where the primary metric is not within the slack factor compared to the best performing run
 
