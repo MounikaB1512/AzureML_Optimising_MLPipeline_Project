@@ -30,7 +30,8 @@ The data is split in training and testing data
 The training data is fed into Logistic Regression
 
 __HyperParameters:__ 
-    *C:* -Inverse of regularisation: chosen discrete parameters choice(100, 10, 1.0, 0.1, 0.01)
+     
+     *C:* -Inverse of regularisation: chosen discrete parameters choice(100, 10, 1.0, 0.1, 0.01)
                       
      *max_iter:* -Number of iterations possible :chosen discrete parameters choice(100, 120, 150,200)
                       
@@ -41,7 +42,8 @@ __Early termination policy__ Bandit policy is used as specified. Bandit Policy i
 slack factor: The slack allowed with respect to the best performing run
 
 The best fitted model parameters of hyperdrive config are :
-                 *C:* - 0.1,*max_iter:* -120 and *Accuracy:* is **0.914**
+                
+             *C:* - 0.1,*max_iter:* -120 and *Accuracy:* is **0.914**
 
 ![image](https://user-images.githubusercontent.com/68179281/112526686-38bfc680-8dc8-11eb-8002-6ec1aeaedcaa.png)
 
